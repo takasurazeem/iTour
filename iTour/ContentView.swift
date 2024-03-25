@@ -28,6 +28,7 @@ struct ContentView: View {
                         )
                     }
                 }
+                .onDelete(perform: deleteDestinations)
             }
             .navigationTitle("iTour")
             .toolbar {
@@ -37,18 +38,26 @@ struct ContentView: View {
     }
     
     func addSamples() {
+        for destination in destinations {
+            modelContext.delete(destination)
+        }
         let Palestine = Destination(
             name: "Palestine",
-            details: "Qibla e Awwal and 3rd holiest site in Islam"
+            details: "Qibla e Awwal and 3rd holiest site in Islam."
         )
         let Makkah = Destination(
             name: "Makkah 🕋",
-            details: "Qibla and the holiest site in Islam",
+            details: "Qibla and the holiest site in Islam.",
             priority: 1
         )
         let Madinah = Destination(
             name: "Madinah",
-            details: "Prophet Muhammad's Masjid and the second holiest site in Islam",
+            details: "Prophet Muhammad's Masjid and the second holiest site in Islam.",
+            priority: 1
+        )
+        let Islamabad = Destination(
+            name: "Islamabad",
+            details: "Capital of the Pakistan.",
             priority: 1
         )
         
@@ -56,6 +65,14 @@ struct ContentView: View {
             modelContext.insert(Palestine)
             modelContext.insert(Makkah)
             modelContext.insert(Madinah)
+            modelContext.insert(Islamabad)
+        }
+    }
+    
+    func deleteDestinations(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let destination = destinations[index]
+            modelContext.delete(destination)
         }
     }
 }
