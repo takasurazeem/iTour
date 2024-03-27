@@ -11,9 +11,10 @@ import SwiftData
 struct ContentView: View {
     @Query var destinations: [Destination]
     @Environment(\.modelContext) var modelContext
+    @State private var path = [Destination]()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 ForEach(destinations) { destination in
                     NavigationLink(value: destination) {
@@ -35,43 +36,17 @@ struct ContentView: View {
             .navigationTitle("iTour")
             .navigationDestination(for: Destination.self, destination: EditDestinationView.init)
             .toolbar {
-                Button("Add Samples", action: addSamples)
+                Button("Add Destination", systemImage: "plus", action: addDestination)
             }
         }
     }
     
-    func addSamples() {
-        for destination in destinations {
-            modelContext.delete(destination)
-        }
-        let Palestine = Destination(
-            name: "Palestine",
-            details: "Qibla e Awwal and 3rd holiest site in Islam."
-        )
-        let Makkah = Destination(
-            name: "Makkah 🕋",
-            details: "Qibla and the holiest site in Islam.",
-            priority: 1
-        )
-        let Madinah = Destination(
-            name: "Madinah",
-            details: "Prophet Muhammad's Masjid and the second holiest site in Islam.",
-            priority: 1
-        )
-        let Islamabad = Destination(
-            name: "Islamabad",
-            details: "Capital of the Pakistan.",
-            priority: 1
-        )
-        
-        if destinations.isEmpty {
-            modelContext.insert(Palestine)
-            modelContext.insert(Makkah)
-            modelContext.insert(Madinah)
-            modelContext.insert(Islamabad)
-        }
+    func addDestination() {
+        let destination = Destination()
+        modelContext.insert(destination)
+        path = [destination]
     }
-    
+
     func deleteDestinations(_ indexSet: IndexSet) {
         for index in indexSet {
             let destination = destinations[index]
