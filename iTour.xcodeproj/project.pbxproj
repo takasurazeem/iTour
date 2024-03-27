@@ -12,6 +12,7 @@
 		7616FFD82BB1909D0042E627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7616FFD72BB1909D0042E627 /* Assets.xcassets */; };
 		7616FFDB2BB1909D0042E627 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7616FFDA2BB1909D0042E627 /* Preview Assets.xcassets */; };
 		7616FFE22BB1910E0042E627 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616FFE12BB1910E0042E627 /* Destination.swift */; };
+		7616FFE42BB198650042E627 /* EditDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616FFE32BB198650042E627 /* EditDestinationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7616FFD72BB1909D0042E627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7616FFDA2BB1909D0042E627 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7616FFE12BB1910E0042E627 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		7616FFE32BB198650042E627 /* EditDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDestinationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				7616FFD32BB1909A0042E627 /* iTourApp.swift */,
 				7616FFD52BB1909A0042E627 /* ContentView.swift */,
+				7616FFE32BB198650042E627 /* EditDestinationView.swift */,
 				7616FFE12BB1910E0042E627 /* Destination.swift */,
 				7616FFD72BB1909D0042E627 /* Assets.xcassets */,
 				7616FFD92BB1909D0042E627 /* Preview Content */,
@@ -143,6 +146,7 @@
 				7616FFD62BB1909A0042E627 /* ContentView.swift in Sources */,
 				7616FFD42BB1909A0042E627 /* iTourApp.swift in Sources */,
 				7616FFE22BB1910E0042E627 /* Destination.swift in Sources */,
+				7616FFE42BB198650042E627 /* EditDestinationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

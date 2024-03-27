@@ -16,21 +16,24 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(destinations) { destination in
-                    VStack(alignment: .leading) {
-                        Text(destination.name)
-                            .font(.headline)
-                        
-                        Text(
-                            destination.date.formatted(
-                                date: .long,
-                                time: .shortened
+                    NavigationLink(value: destination) {
+                        VStack(alignment: .leading) {
+                            Text(destination.name)
+                                .font(.headline)
+                            
+                            Text(
+                                destination.date.formatted(
+                                    date: .long,
+                                    time: .shortened
+                                )
                             )
-                        )
+                        }
                     }
                 }
                 .onDelete(perform: deleteDestinations)
             }
             .navigationTitle("iTour")
+            .navigationDestination(for: Destination.self, destination: EditDestinationView.init)
             .toolbar {
                 Button("Add Samples", action: addSamples)
             }
@@ -78,5 +81,12 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Destination.self, configurations: config)
+        return ContentView()
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }
